@@ -1,0 +1,509 @@
+/* General Body and Container Styles */
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7f6;
+    color: #333;
+}
+
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+
+/* --- Top Navigation Bar --- */
+
+.top-navbar {
+    background-color: #2c3e50;
+    /* Dark blue/gray */
+    color: #ffffff;
+    padding: 15px 25px;
+    display: flex;
+    /* Make it a flex container */
+    justify-content: space-between;
+    /* Distribute items with space between */
+    align-items: center;
+    /* Vertically align items in the center */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.navbar-brand {
+    font-size: 1.6em;
+    font-weight: bold;
+    color: #ecf0f1;
+    /* Light gray */
+}
+
+.top-nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    /* Make it a flex container */
+    gap: 25px;
+    /* Space between links */
+}
+
+.top-nav-links .nav-item {
+    color: #ecf0f1;
+    text-decoration: none;
+    font-size: 1.1em;
+    padding: 5px 0;
+    transition: color 0.3s ease-in-out;
+}
+
+.top-nav-links .nav-item:hover {
+    color: #eff1f4;
+    /* Blue */
+}
+
+.user-info {
+    display: flex;
+    /* Make it a flex container */
+    align-items: center;
+    /* Vertically align items */
+    gap: 20px;
+    /* Space between welcome message and logout button */
+    font-size: 1.05em;
+}
+
+.user-info span {
+    font-weight: 500;
+}
+
+.logout-button-dashboard {
+    background-color: #e74c3c;
+    /* Red */
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.95em;
+    transition: background-color 0.3s ease;
+}
+
+.logout-button-dashboard:hover {
+    background-color: #c0392b;
+    /* Darker red */
+}
+
+
+/* --- Main Content Layout --- */
+
+.main-content-wrapper {
+    display: flex;
+    /* Make it a flex container */
+    flex: 1;
+    /* Allows it to grow and shrink */
+}
+
+
+/* --- Left Navigation Bar (Sidebar) --- */
+
+.left-navbar {
+    width: 220px;
+    background-color: #34495e;
+    /* Slightly lighter dark blue */
+    padding: 25px 0;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.05);
+    display: flex;
+    /* Make it a flex container */
+    flex-direction: column;
+    /* Stack items vertically */
+    gap: 15px;
+}
+
+.left-nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    /* Make it a flex container */
+    flex-direction: column;
+    /* Stack links vertically */
+}
+
+.left-nav-links li {
+    margin-bottom: 10px;
+    /* Still useful for vertical spacing */
+}
+
+.left-nav-links .nav-item {
+    display: block;
+    /* Ensures padding and hover effect cover the full area */
+    color: #ecf0f1;
+    text-decoration: none;
+    padding: 12px 25px;
+    font-size: 1.05em;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border-left: 5px solid transparent;
+}
+
+.left-nav-links .nav-item:hover,
+.left-nav-links .nav-item.active {
+    /* Assuming you might add an 'active' class for the current view */
+    background-color: #54575c;
+    border-left-color: #3498db;
+    color: #e3e9ee;
+}
+
+
+/* --- Dashboard Content Area --- */
+
+.dashboard-content {
+    flex: 1;
+    /* Allows the content area to take up available space */
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    margin: 20px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.08);
+    overflow-y: auto;
+    /* Enable scrolling for content if it overflows */
+}
+
+.section-title {
+    font-size: 2em;
+    color: #2c3e50;
+    margin-bottom: 25px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+
+/* --- Messages --- */
+
+.form-message {
+    padding: 12px 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.success-message {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.error-message {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.loading-message,
+.no-data-message {
+    text-align: center;
+    padding: 20px;
+    color: #777;
+    font-style: italic;
+}
+
+
+/* --- Patient Table --- */
+
+.patient-table-container {
+    overflow-x: auto;
+    /* Enables horizontal scrolling for smaller screens */
+    margin-top: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.patient-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    font-size: 0.95em;
+    min-width: 800px;
+    /* Ensure table doesn't get too cramped */
+}
+
+.patient-table th,
+.patient-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.patient-table th {
+    background-color: #e9ecef;
+    /* Light gray for headers */
+    color: #555;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.patient-table tbody tr:hover {
+    background-color: #f5f5f5;
+}
+
+.patient-table tbody tr.selected-row {
+    background-color: #e8f0fe;
+    /* Highlight color for selected row */
+    border-left: 4px solid #3498db;
+}
+
+.patient-table td {
+    color: #444;
+}
+
+
+/* Form Styles (Generic, for EnrollmentForm, ScreenFailureForm, etc.) */
+
+.form-container {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    max-width: 700px;
+    margin: 30px auto;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #333;
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group input[type="date"],
+.form-group select {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #3498db;
+    outline: none;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+}
+
+.form-buttons {
+    display: flex;
+    /* Make buttons flex items */
+    justify-content: flex-end;
+    /* Align buttons to the end of the container */
+    gap: 15px;
+    /* Space between buttons */
+    margin-top: 30px;
+}
+
+.form-buttons button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.form-buttons .submit-button {
+    background-color: #28a745;
+    /* Green */
+    color: white;
+}
+
+.form-buttons .submit-button:hover {
+    background-color: #218838;
+    /* Darker green */
+    transform: translateY(-2px);
+}
+
+.form-buttons .cancel-button {
+    background-color: #e6eaed;
+    /* Gray */
+    color: white;
+}
+
+.form-buttons .cancel-button:hover {
+    background-color: #e2e8ed;
+    /* Darker gray */
+    transform: translateY(-2px);
+}
+
+
+/* --- Responsive Design --- */
+
+@media (max-width: 992px) {
+    .left-navbar {
+        width: 180px;
+        padding: 15px 0;
+    }
+    .left-nav-links .nav-item {
+        padding: 10px 15px;
+        font-size: 0.95em;
+    }
+    .dashboard-content {
+        padding: 20px;
+        margin: 15px;
+    }
+    .patient-table {
+        font-size: 0.9em;
+    }
+    .patient-table th,
+    .patient-table td {
+        padding: 10px 12px;
+    }
+}
+
+@media (max-width: 768px) {
+    .top-navbar {
+        flex-direction: column;
+        /* Stack items vertically on smaller screens */
+        align-items: flex-start;
+        gap: 15px;
+        padding: 15px;
+    }
+    .top-nav-links {
+        width: 100%;
+        justify-content: space-around;
+        /* Distribute links evenly */
+        gap: 10px;
+    }
+    .top-nav-links .nav-item {
+        font-size: 1em;
+    }
+    .user-info {
+        width: 100%;
+        justify-content: space-between;
+        margin-top: 10px;
+    }
+    .main-content-wrapper {
+        flex-direction: column;
+        /* Stack sidebar and content vertically */
+    }
+    .left-navbar {
+        width: 100%;
+        flex-direction: row;
+        /* Make sidebar items horizontal */
+        justify-content: center;
+        padding: 10px 0;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        overflow-x: auto;
+        /* Allow horizontal scroll if many items */
+    }
+    .left-nav-links {
+        display: flex;
+        /* Ensure links are flexible within the horizontal sidebar */
+        flex-wrap: nowrap;
+        /* Prevent wrapping in horizontal layout */
+        gap: 5px;
+    }
+    .left-nav-links li {
+        margin-bottom: 0;
+        flex-shrink: 0;
+        /* Prevent items from shrinking */
+    }
+    .left-nav-links .nav-item {
+        padding: 8px 12px;
+        font-size: 0.9em;
+        border-left: none;
+        border-bottom: 3px solid transparent;
+        /* Change border for horizontal layout */
+    }
+    .left-nav-links .nav-item:hover,
+    .left-nav-links .nav-item.active {
+        background-color: #2c3e50;
+        border-bottom-color: #3498db;
+        border-left-color: transparent;
+        /* Reset left border */
+    }
+    .dashboard-content {
+        margin: 10px;
+        padding: 15px;
+    }
+    .section-title {
+        font-size: 1.6em;
+        margin-bottom: 20px;
+    }
+    .patient-table-container {
+        border-radius: 5px;
+    }
+    .patient-table {
+        min-width: unset;
+        /* Allow table to shrink more on small screens */
+    }
+    .form-container {
+        margin: 20px auto;
+        padding: 20px;
+    }
+    .form-buttons {
+        flex-direction: column;
+        /* Stack buttons vertically on small screens */
+        gap: 10px;
+    }
+    .form-buttons button {
+        width: 100%;
+        /* Make buttons full width when stacked */
+    }
+}
+
+@media (max-width: 480px) {
+    .top-navbar {
+        padding: 10px;
+    }
+    .navbar-brand {
+        font-size: 1.4em;
+    }
+    .user-info {
+        font-size: 0.9em;
+        flex-wrap: wrap;
+        /* Allow user info to wrap if needed */
+        justify-content: center;
+        gap: 10px;
+    }
+    .logout-button-dashboard {
+        padding: 6px 12px;
+        font-size: 0.85em;
+    }
+    .left-nav-links .nav-item {
+        font-size: 0.8em;
+        padding: 6px 10px;
+    }
+    .dashboard-content {
+        padding: 10px;
+        margin: 5px;
+    }
+    .section-title {
+        font-size: 1.4em;
+    }
+    .patient-table th,
+    .patient-table td {
+        padding: 8px;
+        font-size: 0.85em;
+    }
+}

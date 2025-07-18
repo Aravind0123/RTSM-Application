@@ -1,0 +1,308 @@
+/* EnrollmentForm.css - Styling for the New Patient Enrollment Form */
+
+
+/* --- Variables (Consistent with Dashboard styles) --- */
+
+:root {
+    --primary-blue: #007bff;
+    --primary-dark: #0056b3;
+    --accent-teal: #17a2b8;
+    --accent-coral: #fd7e14;
+    --background-light: #f8f9fa;
+    --background-mid: #e9ecef;
+    --text-dark: #343a40;
+    --text-muted: #6c757d;
+    --border-color: #dee2e6;
+    --shadow-light: rgba(0, 0, 0, 0.08);
+    --shadow-medium: rgba(0, 0, 0, 0.15);
+    --success-green: #28a745;
+    --error-red: #dc3545;
+}
+
+
+/* --- Form Container --- */
+
+.enrollment-form-container {
+    background-color: white;
+    padding: 40px;
+    /* Generous padding inside the form card */
+    border-radius: 15px;
+    /* More rounded corners */
+    box-shadow: 0 8px 25px var(--shadow-medium);
+    /* Deeper, more noticeable shadow */
+    max-width: 700px;
+    /* Max width for the form itself */
+    width: 100%;
+    /* Ensures it's responsive and takes available width */
+    margin: 40px auto;
+    /* Centers the form horizontally with vertical margin */
+    box-sizing: border-box;
+    /* Include padding and border in element's total width and height */
+    /* For consistency with dashboard-content, if placed directly: */
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    /* Spacing between sections */
+}
+
+
+/* --- Section Title --- */
+
+.enrollment-form-container .section-title {
+    font-size: 2.2em;
+    /* Slightly smaller than dashboard main title, but still prominent */
+    color: var(--primary-blue);
+    margin-bottom: 25px;
+    /* Space below title */
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--primary-blue);
+    /* Underline for title */
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-align: center;
+}
+
+
+/* --- Main Form Body --- */
+
+.enrollment-form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    /* Gap between form groups */
+}
+
+
+/* --- Form Group (Label + Input) --- */
+
+.enrollment-form .form-group {
+    margin-bottom: 0;
+    /* Handled by parent gap */
+}
+
+.enrollment-form label {
+    display: block;
+    /* Label on its own line */
+    margin-bottom: 10px;
+    /* Space between label and input */
+    font-weight: 600;
+    /* Bolder label text */
+    color: var(--text-dark);
+    font-size: 1.05em;
+    /* Slightly larger text for labels */
+}
+
+.enrollment-form .form-input {
+    width: 100%;
+    /* Full width */
+    padding: 14px 18px;
+    /* Generous padding inside input */
+    border: 1px solid var(--border-color);
+    /* Light grey border */
+    border-radius: 8px;
+    /* Slightly rounded input corners */
+    font-size: 1.05em;
+    /* Input text size */
+    box-sizing: border-box;
+    /* Include padding in width */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    /* Smooth transitions */
+    background-color: #fcfdfe;
+    /* Very light background for inputs */
+    color: var(--text-dark);
+    -webkit-appearance: none;
+    /* Remove default browser styling for select */
+    -moz-appearance: none;
+    appearance: none;
+}
+
+
+/* Focus styles for inputs and selects */
+
+.enrollment-form .form-input:focus {
+    border-color: var(--accent-teal);
+    /* Teal border on focus */
+    outline: none;
+    /* Remove default outline */
+    box-shadow: 0 0 0 4px rgba(23, 162, 184, 0.2);
+    /* Soft teal glow */
+}
+
+
+/* Specific styling for select arrow if needed (optional, for custom arrow) */
+
+.enrollment-form select.form-input {
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%236c757d%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-6.5%200-12.1%203.2-15.1%208.7-3.1%205.6-2.5%2012.3%201.5%2017.9L139.6%20260.6c5.6%207.9%2016%207.9%2021.6%200l135.1-177.3c4-5.6%204.6-12.3%201.5-17.9z%22%2F%3E%3C%2Fsvg%3E');
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 12px;
+    padding-right: 40px;
+    /* Make space for the custom arrow */
+}
+
+
+/* --- Form Actions (Buttons) --- */
+
+.enrollment-form .form-actions {
+    display: flex;
+    justify-content: flex-end;
+    /* Align buttons to the right */
+    gap: 20px;
+    /* Space between buttons */
+    margin-top: 20px;
+    /* Space above buttons */
+    flex-wrap: wrap;
+    /* Allow buttons to wrap on smaller screens */
+}
+
+.enrollment-form .register-button,
+.enrollment-form .cancel-button {
+    padding: 14px 30px;
+    /* Generous padding for buttons */
+    border: none;
+    border-radius: 25px;
+    /* Pill shape for buttons */
+    cursor: pointer;
+    font-size: 1.05em;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 5px var(--shadow-light);
+    /* Subtle button shadow */
+    white-space: nowrap;
+    /* Prevent button text from breaking */
+    min-width: 130px;
+    /* Ensure a minimum width for buttons */
+}
+
+.enrollment-form .register-button {
+    background-color: var(--accent-coral);
+    /* Use accent-coral for primary action */
+    color: white;
+}
+
+.enrollment-form .register-button:hover {
+    background-color: #e66b0e;
+    /* Darker shade on hover */
+    transform: translateY(-2px);
+    /* Slight lift effect */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.enrollment-form .cancel-button {
+    background-color: var(--text-muted);
+    /* Muted grey for secondary action */
+    color: white;
+}
+
+.enrollment-form .cancel-button:hover {
+    background-color: #5a6268;
+    /* Darker shade on hover */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+
+/* --- Message Styling (Success/Error) --- */
+
+.enrollment-form-container .message {
+    padding: 15px 20px;
+    margin-bottom: 25px;
+    /* Space below message */
+    border-radius: 8px;
+    font-weight: 600;
+    text-align: center;
+    box-shadow: 0 2px 8px var(--shadow-light);
+    animation: fadeIn 0.6s ease-out forwards;
+}
+
+.enrollment-form-container .success-message {
+    background-color: #d4edda;
+    /* Lighter success green */
+    color: var(--success-green);
+    border: 1px solid #c3e6cb;
+}
+
+.enrollment-form-container .error-message {
+    background-color: #f8d7da;
+    /* Lighter error red */
+    color: var(--error-red);
+    border: 1px solid #f5c6cb;
+}
+
+
+/* --- Animations --- */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* --- Responsive Adjustments --- */
+
+@media (max-width: 768px) {
+    .enrollment-form-container {
+        padding: 25px;
+        margin: 25px auto;
+    }
+    .enrollment-form-container .section-title {
+        font-size: 1.8em;
+        margin-bottom: 20px;
+    }
+    .enrollment-form label {
+        font-size: 1em;
+    }
+    .enrollment-form .form-input {
+        padding: 12px 15px;
+        font-size: 1em;
+    }
+    .enrollment-form .form-actions {
+        flex-direction: column;
+        /* Stack buttons vertically */
+        gap: 15px;
+        /* Space between stacked buttons */
+        align-items: stretch;
+        /* Make buttons fill available width */
+    }
+    .enrollment-form .register-button,
+    .enrollment-form .cancel-button {
+        width: 100%;
+        /* Full width for stacked buttons */
+        padding: 12px 20px;
+        min-width: unset;
+        /* Remove min-width for full flexibility */
+    }
+    .enrollment-form-container .message {
+        padding: 12px 15px;
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .enrollment-form-container {
+        padding: 20px;
+        margin: 20px auto;
+        border-radius: 10px;
+        /* Slightly less rounded on very small screens */
+    }
+    .enrollment-form-container .section-title {
+        font-size: 1.6em;
+        margin-bottom: 15px;
+        padding-bottom: 8px;
+    }
+    .enrollment-form {
+        gap: 20px;
+        /* Reduce gap between form groups slightly */
+    }
+    .enrollment-form-container .message {
+        padding: 10px 15px;
+        font-size: 0.9em;
+    }
+}

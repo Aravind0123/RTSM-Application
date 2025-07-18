@@ -1,0 +1,316 @@
+/* login.css */
+
+
+/* Global styles for the body and root elements */
+
+body,
+#root {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    /* Using Inter font as per instructions */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #f0f2f5;
+    /* Light grey background for the whole page */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    /* Ensure it takes full viewport height */
+    width: 100vw;
+    /* Ensure it takes full viewport width */
+    overflow-x: hidden;
+    /* Prevent horizontal scroll */
+}
+
+
+/* App Container - Centralizes the login/dashboard content */
+
+
+/* This might be overridden by App.css, but included for self-containment */
+
+.app-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    /* Ensure it takes full viewport height */
+    width: 100%;
+    /* Take full width */
+    padding: 1rem;
+    /* Add some padding around the content */
+    box-sizing: border-box;
+    /* Include padding in element's total width and height */
+}
+
+
+/* Login/Registration Card Styling */
+
+.login-card {
+    background-color: #ffffff;
+    padding: 2.5rem;
+    /* Increased padding for better spacing */
+    border-radius: 1.25rem;
+    /* Rounded corners */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1), 0 5px 10px rgba(0, 0, 0, 0.05);
+    width: 100%;
+    max-width: 32rem;
+    /* Max width for larger screens */
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    animation: fadeInScale 0.6s ease-out forwards;
+    /* Apply animation */
+    box-sizing: border-box;
+    /* Include padding in element's total width and height */
+}
+
+
+/* Keyframe animation for card entry */
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.95) translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+
+/* Card Title Styling */
+
+.login-card-title {
+    font-size: 2.5rem;
+    /* Larger font size */
+    font-weight: 800;
+    /* Extra bold */
+    text-align: center;
+    color: #2c3e50;
+    /* Darker text color */
+    margin-bottom: 2rem;
+    letter-spacing: -0.02em;
+    /* Slight letter spacing adjustment */
+    line-height: 1.1;
+}
+
+
+/* Message Styling (Success/Error) */
+
+.message {
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.5rem;
+    border-radius: 0.75rem;
+    /* Rounded corners for messages */
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-align: center;
+    animation: slideInFromTop 0.5s ease-out forwards;
+}
+
+.message.success {
+    background-color: #e6ffe6;
+    /* Light green */
+    color: #28a745;
+    /* Darker green */
+    border: 1px solid #28a745;
+}
+
+.message.error {
+    background-color: #ffe6e6;
+    /* Light red */
+    color: #dc3545;
+    /* Darker red */
+    border: 1px solid #dc3545;
+}
+
+@keyframes slideInFromTop {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* Form Container */
+
+.login-form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+    /* Spacing between form elements */
+}
+
+
+/* Form Label Styling */
+
+.form-label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 0.4rem;
+}
+
+
+/* Form Input Styling */
+
+.form-input {
+    width: 100%;
+    padding: 0.9rem 1.2rem;
+    border: 1px solid #dcdcdc;
+    /* Light grey border */
+    border-radius: 0.75rem;
+    /* Rounded corners */
+    font-size: 1rem;
+    color: #333;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    box-sizing: border-box;
+    /* Include padding in element's total width and height */
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: #4a90e2;
+    /* Blue border on focus */
+    box-shadow: 0 0 0 4px rgba(74, 144, 226, 0.2);
+    /* Soft blue shadow on focus */
+}
+
+
+/* Submit Button Styling */
+
+.submit-button {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    background-color: #4a90e2;
+    /* Blue background */
+    color: #ffffff;
+    border: none;
+    border-radius: 0.75rem;
+    /* Rounded corners */
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 6px 15px rgba(74, 144, 226, 0.25);
+    /* Soft shadow */
+    margin-top: 0.5rem;
+    /* Space above button */
+}
+
+.submit-button:hover {
+    background-color: #357ABD;
+    /* Darker blue on hover */
+    transform: translateY(-2px);
+    /* Slight lift effect */
+    box-shadow: 0 8px 20px rgba(74, 144, 226, 0.35);
+    /* Enhanced shadow on hover */
+}
+
+.submit-button:active {
+    transform: translateY(0);
+    /* Press down effect */
+    box-shadow: 0 4px 10px rgba(74, 144, 226, 0.2);
+}
+
+
+/* Logout button specific styling (if different from submit-button) */
+
+.submit-button[style*="background-color: rgb(231, 76, 60)"] {
+    /* Targeting the logout button's inline style */
+    background-color: #e74c3c !important;
+    /* Red background */
+    box-shadow: 0 6px 15px rgba(231, 76, 60, 0.25) !important;
+}
+
+.submit-button[style*="background-color: rgb(231, 76, 60)"]:hover {
+    background-color: #c0392b !important;
+    /* Darker red on hover */
+    box-shadow: 0 8px 20px rgba(231, 76, 60, 0.35) !important;
+}
+
+
+/* Toggle View Text (e.g., "Don't have an account?") */
+
+.toggle-view-text {
+    margin-top: 1.5rem;
+    text-align: center;
+    color: #5f6c7c;
+    /* Muted text color */
+    font-size: 0.95rem;
+}
+
+
+/* Toggle Button (e.g., "Register here") */
+
+.toggle-button {
+    background: none;
+    border: none;
+    color: #4a90e2;
+    /* Blue text color */
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0;
+    text-decoration: underline;
+    transition: color 0.2s ease;
+}
+
+.toggle-button:hover {
+    color: #357ABD;
+    /* Darker blue on hover */
+}
+
+
+/* Responsive adjustments */
+
+@media (max-width: 768px) {
+    .login-card {
+        padding: 1.5rem;
+        /* Reduce padding on smaller screens */
+        margin: 1rem;
+        /* Add margin to prevent sticking to edges */
+        max-width: 95%;
+        /* Allow it to take more width on small screens */
+    }
+    .login-card-title {
+        font-size: 2rem;
+        /* Smaller title on small screens */
+        margin-bottom: 1.5rem;
+    }
+    .form-input,
+    .submit-button {
+        padding: 0.8rem 1rem;
+        /* Slightly smaller padding for inputs/buttons */
+        font-size: 0.95rem;
+        /* Smaller font size */
+    }
+    .submit-button {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .login-card {
+        padding: 1rem;
+    }
+    .login-card-title {
+        font-size: 1.8rem;
+    }
+    .form-label {
+        font-size: 0.85rem;
+    }
+    .message {
+        font-size: 0.9rem;
+        padding: 0.8rem 1rem;
+    }
+}

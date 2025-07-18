@@ -1,0 +1,438 @@
+/* MonitorDashboard.css */
+
+
+/* General Body/HTML Reset for better styling consistency */
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #f4f7f6;
+    /* Light background for the entire page */
+    color: #333;
+}
+
+
+/* Main Container for the entire Dashboard */
+
+.monitor-dashboard-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    /* Ensure it takes full viewport height */
+    background-color: #ffffff;
+    /* White background for the dashboard itself */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Top Navigation Bar */
+
+.top-navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #007bff;
+    /* Primary blue for branding */
+    color: white;
+    padding: 15px 30px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    flex-wrap: wrap;
+    /* Allow wrapping on smaller screens */
+    gap: 15px;
+    /* Space between nav elements */
+}
+
+.navbar-brand {
+    font-size: 1.8em;
+    font-weight: bold;
+    letter-spacing: 1px;
+    flex-shrink: 0;
+}
+
+.top-nav-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 25px;
+    /* Space between navigation items */
+    flex-wrap: wrap;
+    flex-grow: 1;
+    /* Allows it to take available space */
+    justify-content: center;
+    /* Center links when there's space */
+}
+
+.top-nav-links li {
+    margin: 0;
+}
+
+.nav-item {
+    display: block;
+    padding: 8px 15px;
+    color: #e0e0e0;
+    /* Light grey text */
+    text-decoration: none;
+    font-size: 1.05em;
+    border-bottom: 3px solid transparent;
+    /* For active state highlight */
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+    border-radius: 5px;
+}
+
+.nav-item:hover {
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.15);
+    border-bottom-color: #ffffff;
+}
+
+.nav-item.active {
+    /* Class for currently active navigation item */
+    color: #ffffff;
+    background-color: #0056b3;
+    /* Darker blue for active state */
+    border-bottom-color: #00c4cc;
+    /* Aqua highlight for active */
+    font-weight: bold;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    /* Space between welcome text and logout button */
+    flex-wrap: wrap;
+    font-size: 1.0em;
+    opacity: 0.95;
+    flex-shrink: 0;
+    /* Prevent shrinking */
+}
+
+.logout-button-dashboard {
+    background-color: #dc3545;
+    /* Red for logout button */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 500;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.logout-button-dashboard:hover {
+    background-color: #c82333;
+    transform: translateY(-1px);
+}
+
+
+/* Main Content Wrapper (for the content area below the top nav) */
+
+.main-content-wrapper {
+    flex: 1;
+    /* Allows it to take remaining vertical space */
+    padding: 30px;
+    background-color: #fcfcfc;
+    overflow-y: auto;
+    /* Enable scrolling if content overflows */
+}
+
+
+/* Dashboard Content Area (for tables and general info) */
+
+.dashboard-content {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.dashboard-content h2 {
+    color: #0056b3;
+    font-size: 2em;
+    margin-bottom: 25px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+.dashboard-content p {
+    font-size: 1.1em;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.code-broken-header {
+    margin-top: 40px;
+    /* Space between the two tables/sections */
+}
+
+
+/* Table Styling */
+
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+    /* Enable horizontal scroll on small screens */
+    margin-top: 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.patients-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px;
+    /* Ensures table doesn't get too squished on very small screens */
+}
+
+.patients-table thead {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+.patients-table th,
+.patients-table td {
+    padding: 12px 18px;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.patients-table th {
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.9em;
+    letter-spacing: 0.5px;
+}
+
+.patients-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+    /* Zebra striping */
+}
+
+.patients-table tbody tr:hover {
+    background-color: #e6f7ff;
+    /* Light blue on hover */
+    cursor: pointer;
+}
+
+
+/* Message Styling (Success/Error) */
+
+.form-message {
+    padding: 15px 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1.1em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.success-message {
+    background-color: #d4edda;
+    /* Light green */
+    color: #155724;
+    /* Dark green text */
+    border: 1px solid #c3e6cb;
+}
+
+.error-message {
+    background-color: #f8d7da;
+    /* Light red */
+    color: #721c24;
+    /* Dark red text */
+    border: 1px solid #f5c6cb;
+}
+
+
+/* Styling for forms (EmergencyCodeBreakForm) if not already handled */
+
+
+/* This is a basic example, your form component might have its own styles */
+
+.emergency-code-break-form-container {
+    /* Assuming EmergencyCodeBreakForm has a container class */
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.emergency-code-break-form-container label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #444;
+}
+
+.emergency-code-break-form-container input[type="text"],
+.emergency-code-break-form-container input[type="number"],
+.emergency-code-break-form-container select,
+.emergency-code-break-form-container textarea {
+    width: calc(100% - 22px);
+    /* Full width minus padding/border */
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    box-sizing: border-box;
+    /* Include padding and border in the element's total width and height */
+}
+
+.emergency-code-break-form-container button {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: bold;
+    margin-right: 15px;
+    transition: background-color 0.3s ease;
+}
+
+.emergency-code-break-form-container button:hover {
+    background-color: #0056b3;
+}
+
+.emergency-code-break-form-container button.cancel-button {
+    background-color: #6c757d;
+}
+
+.emergency-code-break-form-container button.cancel-button:hover {
+    background-color: #5a6268;
+}
+
+
+/* Responsive Design */
+
+@media (max-width: 992px) {
+    .top-navbar {
+        padding: 15px 20px;
+        flex-direction: column;
+        /* Stack top nav items vertically */
+        align-items: flex-start;
+        gap: 10px;
+    }
+    .navbar-brand {
+        margin-bottom: 10px;
+    }
+    .top-nav-links {
+        width: 100%;
+        justify-content: space-around;
+        /* Distribute links more evenly */
+        margin-bottom: 10px;
+    }
+    .user-info {
+        width: 100%;
+        justify-content: space-between;
+        /* Space out welcome and logout */
+    }
+    .dashboard-content {
+        padding: 25px;
+    }
+    .patients-table th,
+    .patients-table td {
+        padding: 10px 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .top-navbar {
+        padding: 10px 15px;
+    }
+    .navbar-brand {
+        font-size: 1.6em;
+    }
+    .top-nav-links {
+        flex-direction: column;
+        /* Stack links vertically */
+        align-items: flex-start;
+        gap: 5px;
+    }
+    .nav-item {
+        width: 100%;
+        text-align: center;
+        padding: 10px 0;
+        border-bottom: none;
+        /* Remove horizontal border */
+        border-left: 3px solid transparent;
+        /* Use left border for active */
+    }
+    .nav-item:hover {
+        border-bottom-color: transparent;
+        border-left-color: #ffffff;
+    }
+    .nav-item.active {
+        border-bottom-color: transparent;
+        border-left-color: #00c4cc;
+        /* Aqua highlight for active */
+    }
+    .user-info {
+        flex-direction: column;
+        /* Stack welcome and logout vertically */
+        align-items: flex-start;
+        gap: 10px;
+    }
+    .logout-button-dashboard {
+        width: 100%;
+        text-align: center;
+    }
+    .main-content-wrapper {
+        padding: 20px;
+    }
+    .dashboard-content h2 {
+        font-size: 1.8em;
+    }
+    .patients-table {
+        min-width: 500px;
+        /* Adjust min-width if necessary */
+    }
+}
+
+@media (max-width: 480px) {
+    .top-navbar {
+        padding: 8px 10px;
+    }
+    .navbar-brand {
+        font-size: 1.4em;
+    }
+    .user-info span {
+        font-size: 0.9em;
+    }
+    .logout-button-dashboard {
+        padding: 8px 15px;
+        font-size: 0.9em;
+    }
+    .nav-item {
+        font-size: 0.95em;
+        padding: 8px 0;
+    }
+    .main-content-wrapper {
+        padding: 15px;
+    }
+    .dashboard-content {
+        padding: 20px;
+    }
+    .dashboard-content h2 {
+        font-size: 1.6em;
+    }
+    .patients-table th,
+    .patients-table td {
+        padding: 8px 10px;
+        font-size: 0.9em;
+    }
+    .patients-table {
+        min-width: 380px;
+        /* Further adjust for very small screens */
+    }
+}
