@@ -6,7 +6,7 @@ DB_CONFIG = {
     'host': 'localhost',
     'user': 'root',
     'password': 'Aravind@9062',
-    'database': 'new_schema'
+    'database': 'travelagencydb'
 }
 
 def get_db_connection():

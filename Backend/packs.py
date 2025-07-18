@@ -11,5 +11,5 @@ for i in range(1,501):
         i = '0'+i
     if i == '250':
         pack = '10_MG'
-    cursor.execute("insert into packs(pack_number,status,pack_type) values(%s,%s,%s)",('BYL'+i,"I",pack))
+    cursor.execute("insert into packs(pack_number,centre,status,pack_type) values(%s,%s,%s,%s)",('BYL'+i,"Depot","A",pack))
 conn.commit()

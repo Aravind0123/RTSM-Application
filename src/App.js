@@ -3,6 +3,7 @@ import './App.css';
 import InvestigatorDashboard from './components/InvestigatorDashboard';
 import DepotDashboard from './components/DepotDashboard';
 import MonitorDashboard from './components/MonitorDashboard';
+import RtsmAdmin from './components/RtsmAdmin'; // Import the RtsmAdmin component
 
 const App = () => {
     const [username, setUsername] = useState('');
@@ -85,6 +86,7 @@ const App = () => {
                 showMessage(data.message, 'success');
                 setIsLoggedIn(true);
                 setCurrentUsername(data.username);
+                // Ensure role is trimmed and lowercased for consistent comparison
                 setUserRole(data.role ? data.role.toLowerCase().trim() : null);
                 setUserSite(data.sites);
                 setUsername(''); setPassword('');
@@ -121,7 +123,9 @@ const App = () => {
     return (
         <div className="app-container">
             <div className="main-content-area">
-                {isLoggedIn && userRole === 'investigator' ? (
+                {isLoggedIn && userRole === 'admin' ? ( // Check if the user role is 'admin'
+                    <RtsmAdmin /> // Render RtsmAdmin component for admin users
+                ) : isLoggedIn && userRole === 'investigator' ? (
                     <InvestigatorDashboard {...{ username: currentUsername, role: userRole, userSite, onLogout: handleLogout, onUpdateUserSite: handleUserSiteUpdate }} />
                 ) : isLoggedIn && userRole === 'depot' ? (
                     <DepotDashboard {...{ username: currentUsername, role: userRole, onLogout: handleLogout }} />

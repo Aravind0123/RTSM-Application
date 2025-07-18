@@ -10,6 +10,7 @@ from randomisation import patient_rd
 from TreatmentCompletion import patient_tc
 from EmergencyCodeBreak import patient_ecb
 from Monitor_routes import monitor_bp
+from secret_code_site_gen import secret_site
 
 
 
@@ -30,6 +31,7 @@ app.register_blueprint(patient_rd)
 app.register_blueprint(patient_tc)
 app.register_blueprint(patient_ecb)
 app.register_blueprint(monitor_bp)
+app.register_blueprint(secret_site)
 
 @app.route('/')
 def home():
