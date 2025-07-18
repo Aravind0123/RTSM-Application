@@ -86,4 +86,4 @@ The RTSM application uses a role-based access system. Here's a general workflow:
 
 -----
 
-Feel free to explore the different functionalities based on user roles and manage your clinical trial processes efficiently\!
+
