@@ -28,16 +28,16 @@ def raise_consignment():
         cursor.execute(check_pack,(pack_id,))
         pack_available = cursor.fetchone()
         if pack_available is not None:
-            check_consignment = 'SELECT MAX(CAST(SUBSTRING(consignment_id, 4, 3) AS UNSIGNED)) AS max_id_number FROM consignments'
+            check_consignment = 'SELECT MAX(CAST(SUBSTRING(consignment_id, 8, 3) AS UNSIGNED)) AS max_id_number FROM consignments'
             cursor.execute(check_consignment)
             check_consignment = cursor.fetchone()
+            print(check_consignment)
             consignment_id= check_consignment[0] # Renamed to avoid confusion with new_patient_id string
-
             # Generate Unique patient Name
             if consignment_id is None:
                 consignment_id = "CON-BYL" + "00" + str(1)
             else:
-                next_id_num = str(consignment_id + 1)
+                next_id_num = str(consignment_id+1)
                 if len(next_id_num) == 1:
                     pat_id_padded = '00' + next_id_num
                 elif len(next_id_num) == 2:
