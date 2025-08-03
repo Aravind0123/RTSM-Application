@@ -54,6 +54,9 @@ Follow these steps to get the RTSM application up and running on your local mach
 3.  **Start the Frontend Application:**
       * Run the following command to start the React development server:
         ```bash
+        npm install
+        ```
+        ```bash
         npm start
         ```
     This will open the application in your web browser, usually at `http://localhost:3000`.
