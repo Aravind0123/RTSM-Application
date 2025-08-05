@@ -150,7 +150,7 @@ const App = () => {
                                 <label>Username<input type="text" className="form-input" value={username} onChange={e => setUsername(e.target.value)} required /></label>
                                 <label>Password<input type="password" className="form-input" value={password} onChange={e => setPassword(e.target.value)} required /></label>
                                 <button type="submit" className="submit-button">Login</button>
-                                <p className="toggle-view">Don't have an account? <button type="button" onClick={() => { setIsLoginView(false); setMessage(''); setUsername(''); setPassword(''); setSecretCode(''); setRegistrationSite(''); }} className="toggle-button">Register here</button></p>
+                                <p className="toggle-view">Don't have access to study? <button type="button" onClick={() => { setIsLoginView(false); setMessage(''); setUsername(''); setPassword(''); setSecretCode(''); setRegistrationSite(''); }} className="toggle-button">Register here</button></p>
                             </form>
                         ) : (
                             <form onSubmit={handleRegister} className="form-container">
@@ -168,7 +168,7 @@ const App = () => {
                                     ) : <option value="" disabled>Loading sites...</option>}
                                 </select></label>
                                 <button type="submit" className="submit-button">Register</button>
-                                <p className="toggle-view">Already have an account? <button type="button" onClick={() => { setIsLoginView(true); setMessage(''); setUsername(''); setPassword(''); setSecretCode(''); setRegistrationSite(''); }} className="toggle-button">Login here</button></p>
+                                <p className="toggle-view">Already have access to study? <button type="button" onClick={() => { setIsLoginView(true); setMessage(''); setUsername(''); setPassword(''); setSecretCode(''); setRegistrationSite(''); }} className="toggle-button">Login here</button></p>
                             </form>
                         )}
                     </div>

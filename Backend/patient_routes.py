@@ -2,6 +2,8 @@ from flask import Blueprint, request, jsonify
 import uuid # For generating unique patient IDs
 from db import get_db_connection # Import from the new db.py file
 from datetime import datetime, timezone # For accurate timestamps
+from datetime import date, datetime
+
 
 # Create a Blueprint for patient-related routes
 patient_bp = Blueprint('patient', __name__)
@@ -128,11 +130,54 @@ def register_patient():
                 new_patient_name = f"{user_site}-{str(uuid.uuid4())[:8]}" # Use UUID fallback
         else:
             new_patient_name = f"{user_site}001" # First patient for this site
+        cursor = conn.cursor()
+        cursor.execute("select site_act_date from sites where sites = %s",(user_site,))
+        site_data = cursor.fetchone()
+        site_act_date = site_data[0]
+        site_act_date = str(site_act_date)
+        site_act_date = datetime.strptime(site_act_date, "%Y-%m-%d").date()
 
-        # Extract data from request
         informed_consent_date = data.get('informedConsentDate')
+        informed_consent_date = datetime.strptime(informed_consent_date, "%Y-%m-%d").date()
+        if informed_consent_date < site_act_date:
+            return jsonify({
+            "error": f"Invalid consent_date. Please enter a date on or after {site_act_date.strftime('%Y-%m-%d')}"
+        }), 400
+        now = str(date.today())
+        now = datetime.strptime(now,"%Y-%m-%d").date()
+        if informed_consent_date > now:
+            return jsonify({
+            "error": f"Invalid consent_date. Please enter a date on or before {date.today().strftime('%Y-%m-%d')}"
+        }), 400
+            
         enrollment_date = data.get('enrollmentDate')
+        enrollment_date = datetime.strptime(enrollment_date,"%Y-%m-%d").date()
+        if enrollment_date < informed_consent_date:
+            return jsonify({
+            "error": f"Invalid enrollment_date. Please enter a date on or after {informed_consent_date}"
+        }), 400
+        now = str(date.today())
+        now = datetime.strptime(now,"%Y-%m-%d").date()
+        if enrollment_date> now:
+            return jsonify({
+            "error": f"Invalid enrollment_date. Please enter a date on or before {date.today().strftime('%Y-%m-%d')}"
+        }), 400
         date_of_birth = data.get('dateOfBirth')
+        date_of_birth = datetime.strptime(date_of_birth,"%Y-%m-%d").date()
+        if date_of_birth >= now:
+            return jsonify({
+            "error": f"Invalid date_of_birth. Please enter a date before {date.today().strftime('%Y-%m-%d')} and must be 18+ age"
+        }), 400
+        age = now.year - date_of_birth.year - ((now.month, now.day) < (date_of_birth.month, date_of_birth.day))
+        print(age)
+        if age < 18 :
+            return jsonify({
+                "error": f"You are not eligible for enrollment you are < {18}"
+            }),400
+        if  age > 100:
+            return jsonify({
+                "error" : f"You are not eligible for enrollment you are > {100}"
+            }),400
         gender = data.get('gender')
         status = "Enrolled" # Default status upon enrollment
         treatment = "Pending" # Initial treatment status

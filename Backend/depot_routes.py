@@ -163,3 +163,30 @@ def record_medical_arrival():
     finally:
         cursor.close()
         conn.close()
+@depot_bp.route('/depot_sites', methods=['GET'])
+def get_sites():
+    """
+    Fetches all available sites from the database.
+    Returns JSON: { "sites": ["Site A", "Site B", ...] }
+    """
+    conn = get_db_connection()
+    if conn is None:
+        return jsonify({"message": "Database connection failed"}), 500
+
+    cursor = conn.cursor(dictionary=True)
+    try:
+        # Assuming your sites are stored in a table named 'sites' with a column 'site_name'
+        cursor.execute("SELECT site_name FROM sites where sites != 'Depot' ")
+        site_records = cursor.fetchall()
+        
+        # Extract site names into a list
+        sites = [record['site_name'] for record in site_records]
+        
+        return jsonify({"sites": sites}), 200
+
+    except Exception as e:
+        print(f"Error fetching sites: {e}")
+        return jsonify({"message": "Failed to fetch sites", "error": str(e)}), 500
+    finally:
+        cursor.close()
+        conn.close()

@@ -115,8 +115,7 @@ def randomize_patient():
         available_packs = cursor.fetchall() # Returns list of tuples, e.g., [('PACK001',), ('PACK002',)]
 
         if not available_packs:
-            return jsonify({"message": "No available packs for randomization"}), 401
-
+            return jsonify({"message": "No available packs for randomization"}), 400
         # Select a random pack
         random_pack_tuple = random.choice(available_packs)
         random_pack_id = random_pack_tuple[0] # Extract the string from the tuple

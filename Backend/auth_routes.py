@@ -175,7 +175,7 @@ def get_pending_shipments():
     Returns JSON: { "shipments": ["SHP001", "SHP002"] }
     """
     site = request.args.get('site')
-
+    print(site)
     if not site:
         return jsonify({"message": "Site parameter is required"}), 400
 

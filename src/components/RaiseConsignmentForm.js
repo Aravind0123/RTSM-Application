@@ -13,7 +13,7 @@ const RaiseConsignmentForm = ({ onSuccess, onError, onCancel }) => {
   useEffect(() => {
     const fetchSites = async () => {
       try {
-        const response = await fetch(`${API_BASE_URL}/sites`);
+        const response = await fetch(`${API_BASE_URL}/depot_sites`);
         if (!response.ok) {
           const errorText = await response.text();
           throw new Error(`HTTP error! status: ${response.status} - ${errorText}`);

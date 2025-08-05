@@ -55,7 +55,7 @@ const RandomizationForm = ({ username, onSuccess, onError, onCancel }) => {
 
       if (!response.ok) {
         const errorData = await response.json();
-        throw new Error(errorData.error || `HTTP error! status: ${response.status}`);
+        throw new Error(errorData.message || `HTTP error! status: ${response.status}`);
       }
 
       const result = await response.json();
